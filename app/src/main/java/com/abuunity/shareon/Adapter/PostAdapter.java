@@ -28,8 +28,8 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
-    private Context context;
-    private List<Posts> postsList;
+    private final Context context;
+    private final List<Posts> postsList;
 
     private FirebaseUser firebaseUser;
 

@@ -1,6 +1,7 @@
 package com.abuunity.shareon.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.abuunity.shareon.EditProfileActivity;
 import com.abuunity.shareon.Model.Posts;
 import com.abuunity.shareon.Model.Users;
 import com.abuunity.shareon.R;
@@ -47,8 +49,7 @@ public class ProfileFragment extends Fragment {
     private RecyclerView recyclerViewSave;
 
     private FirebaseUser firebaseUser;
-    String profilid;
-
+    private String profilid;
     private Button editProfile;
 
     @Override
@@ -81,7 +82,6 @@ public class ProfileFragment extends Fragment {
 
         recyclerViewPosts = view.findViewById(R.id.rv_my_posts);
         recyclerViewSave = view.findViewById(R.id.rv_my_save);
-
         editProfile = view.findViewById(R.id.edit_profile);
 
         userInfo();
@@ -94,14 +94,13 @@ public class ProfileFragment extends Fragment {
             checkFollowingStatus();
         }
 
-
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String btnText = editProfile.getText().toString();
 
                 if(btnText.equals("Edit profile")) {
-
+                    startActivity(new Intent(getContext(), EditProfileActivity.class));
                 } else {
                     if(btnText.equals("follow")) {
                         FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())

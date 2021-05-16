@@ -1,17 +1,9 @@
 package com.abuunity.shareon;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Instrumentation;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
@@ -19,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -33,14 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
 import com.hendraanggrian.appcompat.socialview.Hashtag;
 import com.hendraanggrian.appcompat.widget.HashtagArrayAdapter;
 import com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -52,17 +42,13 @@ public class ShareActivity extends AppCompatActivity {
     private TextView post;
     private String imageUrl;
     private SocialAutoCompleteTextView description;
-    private FirebaseAuth mAuth;
-    private DatabaseReference mRootRef;
-
-    ProgressDialog dialog;
+    private FirebaseAuth firebaseAuth;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
-
-//        getSupportActionBar().hide();
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Posting");
@@ -72,9 +58,7 @@ public class ShareActivity extends AppCompatActivity {
         imageAdd = findViewById(R.id.image_add);
         post = findViewById(R.id.post);
         description = findViewById(R.id.description);
-
-        mAuth = FirebaseAuth.getInstance();
-
+        firebaseAuth = FirebaseAuth.getInstance();
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +152,7 @@ public class ShareActivity extends AppCompatActivity {
                     map.put("postid", postId);
                     map.put("imageurl", imageUrl);
                     map.put("description", description.getText().toString());
-                    map.put("publisher", mAuth.getCurrentUser().getUid());
+                    map.put("publisher", firebaseAuth.getCurrentUser().getUid());
 
                     ref.child(postId).setValue(map);
 
@@ -203,7 +187,7 @@ public class ShareActivity extends AppCompatActivity {
             map.put("postid", postId);
             map.put("imageurl", imageUrl);
             map.put("description", description.getText().toString());
-            map.put("publisher", mAuth.getCurrentUser().getUid());
+            map.put("publisher", firebaseAuth.getCurrentUser().getUid());
 
             ref.child(postId).setValue(map);
 

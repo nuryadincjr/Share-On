@@ -18,24 +18,37 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/nav_search"
-                android:src="@drawable/ic_search"
-                app:tint="@color/white" />
-
-            <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView
-                android:id="@+id/search_bar"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:hint="@string/search_user_or_hash_tag_post"
-                android:maxLines="1"
-                android:textColor="@color/white"
-                android:textColorHint="#D6D6D6" />
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/rounded_1in"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/nav_search"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/white" />
+
+                <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView
+                    android:id="@+id/search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/search_user_or_hash_tag_post"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="#D6D6D6" />
+
+            </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -105,6 +118,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp" />
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

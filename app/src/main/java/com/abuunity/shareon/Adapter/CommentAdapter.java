@@ -27,16 +27,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Comment;
-
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
-    private Context context;
-    private List<Comments> commentList;
+    private final Context context;
+    private final List<Comments> commentList;
 
     String postId;
     private FirebaseUser firebaseUser;
@@ -146,8 +144,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             imageProfile = itemView.findViewById(R.id.image_profile);
             username = itemView.findViewById(R.id.username);
             comment = itemView.findViewById(R.id.comment_post);
-
-
         }
     }
 }

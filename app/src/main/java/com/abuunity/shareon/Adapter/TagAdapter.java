@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TagAdapter extends RecyclerView.Adapter<TagAdapter.ViewHolder>{
 
-    private Context context;
+    private final Context context;
     private List<String> tagList;
     private List<String> countList;
 

@@ -41,8 +41,6 @@ public class CommentActivity extends AppCompatActivity {
     private CommentAdapter commentAdapter;
     private List<Comments> commentsList;
 
-
-
     private EditText addComment;
     private ImageView postComment;
     private CircleImageView imageProfile;
@@ -64,6 +62,7 @@ public class CommentActivity extends AppCompatActivity {
         Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

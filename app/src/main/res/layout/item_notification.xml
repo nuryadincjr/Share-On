@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_toStartOf="@+id/image_post"
         android:layout_toEndOf="@+id/image_profile"
         android:orientation="vertical">
 
@@ -27,11 +28,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/full_name"
+            android:id="@+id/comment_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="@string/name" />
+            android:text="@string/comment_add" />
 
         <View
             android:id="@+id/view2"
@@ -42,15 +43,12 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_follow"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
+    <ImageView
+        android:id="@+id/image_post"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/rounded_1in"
-        android:text="@string/follow"
-        android:textSize="12sp"
-        android:visibility="visible" />
-
+        android:contentDescription="@string/image_post"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_post" />
 </RelativeLayout>

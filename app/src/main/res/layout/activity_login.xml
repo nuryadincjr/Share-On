@@ -39,7 +39,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:autofillHints=""
-        android:background="@drawable/outline_background"
+        android:background="@drawable/rounded_1in"
+        android:backgroundTint="@color/colorPrimarySoft"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:padding="10dp" />
@@ -50,7 +51,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:autofillHints=""
-        android:background="@drawable/outline_background"
+        android:background="@drawable/rounded_1in"
+        android:backgroundTint="@color/colorPrimarySoft"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:padding="10dp" />
@@ -58,8 +60,9 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_1in"
         android:text="@string/login" />
 
     <TextView

@@ -66,6 +66,7 @@ public class HomeFragment extends Fragment {
                     followingList.add(dataSnapshot.getKey());
                 }
 
+                followingList.add(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 readPosts();
             }
 

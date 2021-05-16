@@ -9,12 +9,35 @@
     android:padding="8dp"
     tools:context=".RegisterActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image_profile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:contentDescription="@string/image_icon"
-        android:src="@drawable/ic_post" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_profile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_person" />
+
+        <ImageButton
+            android:id="@+id/btn_browseres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/image_profile"
+            android:layout_alignEnd="@+id/image_profile"
+            android:layout_alignBottom="@+id/image_profile"
+            android:layout_marginStart="-24dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/image_profile"
+            android:background="@drawable/rounded_1in"
+            android:contentDescription="@string/name"
+            android:tint="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_add" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textView2"
@@ -39,7 +62,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:autofillHints=""
-        android:background="@drawable/outline_background"
+        android:background="@drawable/rounded_1in"
+        android:backgroundTint="@color/colorPrimarySoft"
         android:hint="@string/username"
         android:inputType="text"
         android:padding="10dp" />
@@ -50,7 +74,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:autofillHints=""
-        android:background="@drawable/outline_background"
+        android:background="@drawable/rounded_1in"
+        android:backgroundTint="@color/colorPrimarySoft"
         android:hint="@string/name"
         android:inputType="text"
         android:padding="10dp" />
@@ -61,7 +86,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:autofillHints=""
-        android:background="@drawable/outline_background"
+        android:background="@drawable/rounded_1in"
+        android:backgroundTint="@color/colorPrimarySoft"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:padding="10dp" />
@@ -72,7 +98,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:autofillHints=""
-        android:background="@drawable/outline_background"
+        android:background="@drawable/rounded_1in"
+        android:backgroundTint="@color/colorPrimarySoft"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:padding="10dp" />
@@ -80,8 +107,9 @@
     <Button
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_1in"
         android:text="@string/register" />
 
     <TextView

@@ -27,7 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
 
-    private Context mContext;
+    private final Context mContext;
     private List<Users> usersList;
     private boolean isFragment;
     private FirebaseUser firebaseUser;

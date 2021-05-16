@@ -20,7 +20,7 @@
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_add">Add</string>
-    <string name="nav_notification">Notification</string>
+    <string name="nav_notification">Notifications</string>
     <string name="nav_profile">Profile</string>
 
     <string name="fragment_home">Home Fragment</string>
@@ -41,6 +41,7 @@
     <string name="users">Users</string>
     <string name="hash_tags">Hash Tags</string>
     <string name="posts">Posts</string>
+    <string name="postss">POSTS</string>
     <string name="posts_no">0</string>
     <string name="search_a_new_knowledge">Search a new knowledge</string>
     <string name="like">0</string>
@@ -53,10 +54,12 @@
     <string name="followers_count">FOLLOWERS</string>
     <string name="following_count">FOLLOWING</string>
     <string name="following">following</string>
-    <string name="edit_profile">Edit Profile</string>
     <string name="bio">Bio</string>
     <string name="may_post">May post</string>
     <string name="post_save">Post Save</string>
+    <string name="inspirations">Inspirations</string>
+    <string name="saves">SAVES</string>
+    <string name="edit_profile">Edit Profile</string>
 
 
 </resources>
