@@ -55,7 +55,7 @@
                 android:id="@+id/image_post"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorPrimarySoft"
                 android:contentDescription="@string/image_post"
                 android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="1:1"

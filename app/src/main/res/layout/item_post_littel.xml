@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="190dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:background="@drawable/rounded_01in"
     android:elevation="2dp">
 
@@ -53,7 +54,7 @@
                 android:id="@+id/image_post"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorPrimarySoft"
                 android:contentDescription="@string/image_post"
                 android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="1:1"
@@ -135,10 +136,6 @@
             android:layout_marginBottom="8dp"
             android:text="@string/description"
             android:textSize="12sp" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 

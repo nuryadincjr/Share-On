@@ -196,7 +196,12 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Users users = snapshot.getValue(Users.class);
 
-                Picasso.get().load(users.getImageUrl()).into(imageProfil);
+                if(users.getImageUrl().equals("default")) {
+                    imageProfil.setImageResource(R.drawable.ic_person);
+                } else {
+                    Picasso.get().load(users.getImageUrl()).into(imageProfil);
+                }
+
                 username.setText(users.getUsername());
                 name.setText(users.getName());
                 bio.setText(users.getBio());
