@@ -59,7 +59,6 @@
                 android:contentDescription="@string/image_post"
                 android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="1:1"
-                app:srcCompat="@drawable/ic_post"
                 tools:ignore="MissingConstraints" />
 
             <RelativeLayout

@@ -61,8 +61,6 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
                 if(notifications.isPost()) {
                     context.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
                             .putString("postId", notifications.getPostId()).apply();
-
-
                 }
             }
         });
@@ -118,7 +116,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Posts posts = snapshot.getValue(Posts.class);
-                Picasso.get().load(posts.getImageurl()).placeholder(R.drawable.ic_post).into(imagePost);
+                Picasso.get().load(posts.getImageurl()).placeholder(R.drawable.ic_photo).into(imagePost);
             }
 
             @Override

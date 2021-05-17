@@ -38,7 +38,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="8dp"
                     android:contentDescription="@string/nav_bar"
-                    android:src="@drawable/ic_round_menu_24"
+                    android:src="@drawable/ic_menu"
                     app:tint="@color/white" />
 
 
@@ -227,7 +227,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:contentDescription="@string/may_post"
-                        android:src="@drawable/ic_app" />
+                        android:src="@drawable/ic_app"
+                        android:tint="@color/selector" />
 
                     <ImageButton
                         android:id="@+id/save_bar"
@@ -236,7 +237,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:contentDescription="@string/post_save"
-                        android:src="@drawable/ic_bookmark" />
+                        android:src="@drawable/ic_bookmark"
+                        android:tint="@color/selector" />
 
 
                 </LinearLayout>

@@ -65,9 +65,10 @@
                 android:layout_height="380dp"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_01in"
+                android:backgroundTint="@color/colorPrimarySoft"
                 android:contentDescription="@string/image_post"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_post" />
+                app:srcCompat="@drawable/ic_photo" />
 
             <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView
                 android:id="@+id/description"

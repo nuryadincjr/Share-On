@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="5dp"
     android:background="@drawable/rounded_01in"
     android:elevation="2dp">
 
@@ -58,7 +58,6 @@
                 android:contentDescription="@string/image_post"
                 android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="1:1"
-                app:srcCompat="@drawable/ic_post"
                 tools:ignore="MissingConstraints" />
 
             <RelativeLayout
@@ -125,6 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:maxLines="2"
             android:text="@string/app_name"
             android:textStyle="bold" />
 
@@ -134,6 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
+            android:maxLines="2"
             android:text="@string/description"
             android:textSize="12sp" />
 

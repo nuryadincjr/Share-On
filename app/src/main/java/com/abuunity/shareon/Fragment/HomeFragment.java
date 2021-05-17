@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.abuunity.shareon.Adapter.PostAdapter;
 import com.abuunity.shareon.Model.Posts;
 import com.abuunity.shareon.R;
+import com.google.android.material.tabs.TabItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,20 +34,25 @@ public class HomeFragment extends Fragment {
 
     private List<String> followingList;
 
+    private TabItem tabFollowing;
+    private TabItem tabInspitations;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+        tabFollowing = view.findViewById(R.id.following_tab);
+        tabInspitations = view.findViewById(R.id.ispirations_tab);
+
         recyclerViewPosts = view.findViewById(R.id.rv_posts);
-        recyclerViewPosts.setHasFixedSize(true);
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        manager.setStackFromEnd(true);
-        manager.setReverseLayout(true);
-        recyclerViewPosts.setLayoutManager(manager);
         postsList = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), postsList);
+
+
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
         recyclerViewPosts.setLayoutManager(gridLayoutManager);
@@ -55,12 +61,12 @@ public class HomeFragment extends Fragment {
         followingList = new ArrayList<>();
 
         checkFollowingUsers();
+
+
         return view;
-        
     }
 
     private void checkFollowingUsers() {
-
         FirebaseDatabase.getInstance().getReference().child("Follow").child(FirebaseAuth.getInstance().
                 getCurrentUser().getUid()).child("following").addValueEventListener(new ValueEventListener() {
             @Override
@@ -81,7 +87,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void readPosts() {
+    public void readPosts() {
         FirebaseDatabase.getInstance().getReference().child("Posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

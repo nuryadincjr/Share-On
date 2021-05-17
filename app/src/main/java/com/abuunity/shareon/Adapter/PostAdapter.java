@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abuunity.shareon.CommentActivity;
+import com.abuunity.shareon.Fragment.ProfileFragment;
 import com.abuunity.shareon.Model.Posts;
 import com.abuunity.shareon.Model.Users;
 import com.abuunity.shareon.R;
@@ -51,7 +52,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         Posts posts = postsList.get(position);
         Picasso.get().load(posts.getImageurl()).into(holder.imagePost);
-        System.out.println(posts.getImageurl());
+
         holder.description.setText(posts.getDescription());
 
         FirebaseDatabase.getInstance().getReference().child("Users").child(posts.getPublisher()).addValueEventListener(new ValueEventListener() {
@@ -77,6 +78,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
 
         isLiked(posts.getPostid(), holder.imageLike);
+        isSave(posts.getPostid(), holder.imageSave);
         countLike(posts.getPostid(), holder.likeCount);
         countComment(posts.getPostid(), holder.commentCount);
 
@@ -103,8 +105,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
 
+        holder.imageSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.imageSave.getTag().equals("Save")) {
+                    FirebaseDatabase.getInstance().getReference().child("Saves")
+                            .child(firebaseUser.getUid()).child(posts.getPostid()).setValue(true);
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("Saves")
+                            .child(firebaseUser.getUid()).child(posts.getPostid()).removeValue();
+                }
+            }
+        });
+
 
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -145,7 +162,26 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
     }
 
-    private void isLiked(String postid, ImageView imageView) {
+    private void isSave(final String postid, final ImageView imageSave) {
+        FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child(postid).exists()) {
+                    imageSave.setImageResource(R.drawable.ic_bookmark_fill);
+                    imageSave.setTag("Saved");
+                } else {
+                    imageSave.setImageResource(R.drawable.ic_bookmark);
+                    imageSave.setTag("Save");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void isLiked(final String postid, final ImageView imageView) {
         FirebaseDatabase.getInstance().getReference().child("Likes").child(postid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
