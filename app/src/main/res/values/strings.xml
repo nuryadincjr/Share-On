@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">ShareOn</string>
+    <string name="image_icon">iamge icon</string>
+    <string name="log_in">Log in</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <string name="welcome_to_shareon">Welcome to ShareOn</string>
+    <string name="register_to_shareon">Register to ShareOn</string>
+    <string name="login_to_shareon">Login to ShareOn</string>
+
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="already_a_user_login">Already a user? Login</string>
+    <string name="new_to_shareon_register">New to ShareOn? Register</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_add">Add</string>
+    <string name="nav_notification">Notifications</string>
+    <string name="nav_profile">Profile</string>
+
+    <string name="fragment_home">Home Fragment</string>
+    <string name="fragment_search">Search Fragment</string>
+    <string name="fragment_notification">Notification Fragment</string>
+    <string name="fragment_profile">Profile Fragment</string>
+    <string name="close">close</string>
+    <string name="share">SHARE</string>
+    <string name="image_post">image post</string>
+    <string name="description">Description</string>
+    <string name="search_user_or_hash_tag_post">Search user or hash tag post</string>
+    <string name="follow">Follow</string>
+    <string name="textProfilMessage">Please set your name and an optional profil image</string>
+    <string name="profile_info">Profile Info</string>
+    <string name="share_your_experiences_and_gain_knowledge">Share your experiences and gain knowledge</string>
+    <string name="tag">#tag</string>
+    <string name="no">no</string>
+    <string name="users">Users</string>
+    <string name="hash_tags">Hash Tags</string>
+    <string name="posts">Posts</string>
+    <string name="postss">POSTS</string>
+    <string name="posts_no">0</string>
+    <string name="search_a_new_knowledge">Search a new knowledge</string>
+    <string name="like">0</string>
+    <string name="comment">0</string>
+    <string name="save">save</string>
+    <string name="more">more</string>
+    <string name="comment_add">Add a relevant comment</string>
+    <string name="nav_bar">nav bar</string>
+    <string name="posts_count">POSTS</string>
+    <string name="followers_count">FOLLOWERS</string>
+    <string name="following_count">FOLLOWING</string>
+    <string name="following">following</string>
+    <string name="bio">Bio</string>
+    <string name="may_post">May post</string>
+    <string name="post_save">Post Save</string>
+    <string name="inspirations">Inspirations</string>
+    <string name="saves">SAVES</string>
+    <string name="edit_profile">Edit Profile</string>
+
+
+</resources>
