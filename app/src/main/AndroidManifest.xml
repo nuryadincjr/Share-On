@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShareOn">
+        <activity android:name=".DetailPostActivity"></activity>
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".CommentActivity" />
         <activity android:name=".ShareActivity" />

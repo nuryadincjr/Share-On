@@ -71,7 +71,7 @@ public class CommentActivity extends AppCompatActivity {
         });
 
 
-        recyclerViewComment = findViewById(R.id.rv_comments);
+        recyclerViewComment = findViewById(R.id.rv_posts);
         recyclerViewComment.setHasFixedSize(true);
         recyclerViewComment.setLayoutManager(new LinearLayoutManager(this));
         commentsList = new ArrayList<>();

@@ -1,19 +1,28 @@
 package com.abuunity.shareon;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.abuunity.shareon.Adapter.PostAdapter;
+import com.abuunity.shareon.Adapter.ToolsAdapter;
+import com.abuunity.shareon.Model.Tools;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,6 +40,8 @@ import com.hendraanggrian.appcompat.socialview.Hashtag;
 import com.hendraanggrian.appcompat.widget.HashtagArrayAdapter;
 import com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,10 +56,28 @@ public class ShareActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog dialog;
 
+    private RecyclerView recyclerViewTools;
+    private List<Tools> toolsList;
+    private ToolsAdapter toolsAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
+
+
+        recyclerViewTools = findViewById(R.id.rv_tools);
+        toolsList = new ArrayList<>(Tools.getObjectList());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerViewTools.setLayoutManager(layoutManager);
+        recyclerViewTools.setItemAnimator(new DefaultItemAnimator());
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerViewTools);
+        toolsAdapter = new ToolsAdapter(this, toolsList);
+        recyclerViewTools.setAdapter(toolsAdapter);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Posting");
@@ -59,6 +88,7 @@ public class ShareActivity extends AppCompatActivity {
         post = findViewById(R.id.post);
         description = findViewById(R.id.description);
         firebaseAuth = FirebaseAuth.getInstance();
+
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +114,9 @@ public class ShareActivity extends AppCompatActivity {
                 upload();
             }
         });
+
+
+
     }
 
     private String getFileExtension(Uri imageUri) {
@@ -207,4 +240,24 @@ public class ShareActivity extends AppCompatActivity {
             startActivity(new Intent(ShareActivity.this, MainActivity.class));
         }
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
+            | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = viewHolder.getAdapterPosition();
+
+            Collections.swap(toolsList, fromPosition, toPosition);
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+        }
+    };
+
 }

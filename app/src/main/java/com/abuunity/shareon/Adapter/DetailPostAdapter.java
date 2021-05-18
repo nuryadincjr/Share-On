@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abuunity.shareon.CommentActivity;
-import com.abuunity.shareon.DetailPostActivity;
 import com.abuunity.shareon.Fragment.ProfileFragment;
 import com.abuunity.shareon.Model.Posts;
 import com.abuunity.shareon.Model.Users;
@@ -29,15 +28,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
-
+public class DetailPostAdapter extends RecyclerView.Adapter<DetailPostAdapter.ViewHolder> {
 
     private final Context context;
     private final List<Posts> postsList;
 
     private FirebaseUser firebaseUser;
 
-    public PostAdapter(Context context, List<Posts> postsList) {
+    public DetailPostAdapter(Context context, List<Posts> postsList) {
         this.context = context;
         this.postsList = postsList;
     }
@@ -45,8 +43,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post_littel, parent, false);
-        return new PostAdapter.ViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        return new DetailPostAdapter.ViewHolder(view);
     }
 
     @Override
@@ -121,7 +119,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
 
-
         holder.username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,27 +141,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
 
-        holder.imagePost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DetailPostActivity.class);
-                intent.putExtra("postId", posts.getPostid());
-                intent.putExtra("authorId", posts.getPublisher());
-                context.startActivity(intent);
-            }
-        });
-
-        holder.author.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DetailPostActivity.class);
-                intent.putExtra("postId", posts.getPostid());
-                intent.putExtra("authorId", posts.getPublisher());
-                context.startActivity(intent);
-            }
-        });
     }
-
 
 
     @Override

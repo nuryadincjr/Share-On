@@ -60,6 +60,19 @@
     <string name="inspirations">Inspirations</string>
     <string name="saves">SAVES</string>
     <string name="edit_profile">Edit Profile</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail_post">Detail post</string>
+    <string name="title">Title</string>
+    <string name="drag_tool">drag tool</string>
+    <string name="tools">Tools</string>
+    <string name="tools_and_materials">Tools and Materials</string>
+    <string name="new_tools">New tools</string>
+    <string name="steps">Steps</string>
+    <string name="new_steps">New Steps</string>
+    <string name="delete">delete</string>
+    <string name="write_down_the_tools_or_materials_you_use">Write down the tools or materials you use.</string>
+    <string name="remove">remove</string>
+    <string name="_0_64">0/64</string>
 
 </resources>

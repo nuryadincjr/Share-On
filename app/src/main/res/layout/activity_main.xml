@@ -26,7 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_02lin"
-            android:elevation="10dp"
             app:itemIconTint="@color/selector"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/menu_button" />

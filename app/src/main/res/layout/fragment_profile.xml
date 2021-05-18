@@ -178,7 +178,8 @@
                         android:layout_height="35dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/rounded_1in"
-                        android:text="@string/edit_profile" />
+                        android:text="@string/edit_profile"
+                        app:iconTint="@color/selector" />
 
                 </LinearLayout>
 

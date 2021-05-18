@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/index_steps"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/circle"
+        android:backgroundTint="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/no"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/image_steps"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@+id/index_steps"
+        android:background="@drawable/rounded_01in"
+        android:backgroundTint="@color/colorPrimarySoft"
+        android:contentDescription="@string/image_post"
+        app:srcCompat="@drawable/ic_photo" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_steps">
+
+        <ImageView
+            android:id="@+id/image_drag"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/drag_tool"
+            app:srcCompat="@drawable/ic_menu" />
+
+        <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView
+            android:id="@+id/imput_tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/rounded_1in"
+            android:backgroundTint="@color/colorPrimarySoft"
+            android:hint="@string/steps"
+            android:maxLines="5"
+            android:padding="10dp"
+            android:layout_toEndOf="@+id/image_drag"
+            android:layout_toStartOf="@+id/image_delete"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:id="@+id/image_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/more"
+            app:srcCompat="@drawable/ic_more"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

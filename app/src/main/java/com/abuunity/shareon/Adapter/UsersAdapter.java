@@ -79,6 +79,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
                 }
             }
         });
+
+
     }
 
     private void isFollowed(final String id, final Button btnFollow) {

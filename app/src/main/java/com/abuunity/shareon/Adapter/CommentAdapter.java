@@ -56,8 +56,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-       Comments comments = commentList.get(position);
-       holder.comment.setText(comments.getComment());
+        Comments comments = commentList.get(position);
+        holder.comment.setText(comments.getComment());
         FirebaseDatabase.getInstance().getReference().child("Users").child(comments.getPublisher()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -124,7 +124,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             }
             return true;
         });
-
     }
 
     @Override
