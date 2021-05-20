@@ -4,71 +4,111 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/index_steps"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/circle"
-        android:backgroundTint="@color/colorPrimary"
-        android:gravity="center"
-        android:text="@string/no"
-        android:textColor="@color/white" />
-
-    <ImageView
-        android:id="@+id/image_steps"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_margin="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_toEndOf="@+id/index_steps"
-        android:background="@drawable/rounded_01in"
-        android:backgroundTint="@color/colorPrimarySoft"
-        android:contentDescription="@string/image_post"
-        app:srcCompat="@drawable/ic_photo" />
-
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/image_steps">
+        app:cardCornerRadius="10dp">
 
-        <ImageView
-            android:id="@+id/image_drag"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/drag_tool"
-            app:srcCompat="@drawable/ic_menu" />
-
-        <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView
-            android:id="@+id/imput_tools"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/rounded_1in"
-            android:backgroundTint="@color/colorPrimarySoft"
-            android:hint="@string/steps"
-            android:maxLines="5"
-            android:padding="10dp"
-            android:layout_toEndOf="@+id/image_drag"
-            android:layout_toStartOf="@+id/image_delete"
-            android:layout_centerVertical="true"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/more"
-            app:srcCompat="@drawable/ic_more"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
+            <LinearLayout
+                android:id="@+id/input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
 
-    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/index_no"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/rounded_1in"
+                        android:backgroundTint="@color/colorPrimarySoft"
+                        android:gravity="center"
+                        android:text="@string/no" />
+
+                    <ImageView
+                        android:id="@+id/image_drag"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:contentDescription="@string/drag_tool"
+                        app:srcCompat="@drawable/ic_menu" />
+                </LinearLayout>
+
+                <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView
+                    android:id="@+id/input_steps"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_01in"
+                    android:backgroundTint="@color/colorPrimarySoft"
+                    android:hint="@string/steps"
+                    android:maxLength="500"
+                    android:padding="10dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/image_delete"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/more"
+                        app:srcCompat="@drawable/ic_delete" />
+
+                    <ImageView
+                        android:id="@+id/image_add"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:contentDescription="@string/nav_add"
+                        app:srcCompat="@drawable/ic_add" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image_steps"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_01in"
+                    android:backgroundTint="@color/colorPrimarySoft"
+                    android:contentDescription="@string/image_post"
+                    app:srcCompat="@drawable/ic_photo" />
+
+                <TextView
+                    android:id="@+id/input_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="27dp"
+                    android:text="@string/_0_500"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

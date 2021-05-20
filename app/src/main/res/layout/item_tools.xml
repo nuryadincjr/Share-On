@@ -41,7 +41,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/rounded_1in"
+            android:background="@drawable/rounded_01in"
             android:backgroundTint="@color/colorPrimarySoft"
             android:hint="@string/steps"
             android:maxLength="64"

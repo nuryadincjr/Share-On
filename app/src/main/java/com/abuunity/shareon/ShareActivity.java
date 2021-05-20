@@ -1,14 +1,14 @@
 package com.abuunity.shareon;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +20,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.abuunity.shareon.Adapter.PostAdapter;
+import com.abuunity.shareon.Adapter.StepsAdapter;
 import com.abuunity.shareon.Adapter.ToolsAdapter;
+import com.abuunity.shareon.Model.Steps;
 import com.abuunity.shareon.Model.Tools;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,24 +61,36 @@ public class ShareActivity extends AppCompatActivity {
     private List<Tools> toolsList;
     private ToolsAdapter toolsAdapter;
 
+    private RecyclerView recyclerViewSteps;
+    private List<Steps> stepsList;
+    private StepsAdapter stepsAdapter;
+    private ImageView imageSteps;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
 
+        recyclerViewSteps = findViewById(R.id.rv_steps);
+        stepsList = new ArrayList<>(Steps.stepsList());
+        recyclerViewSteps.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewSteps.setItemAnimator(new DefaultItemAnimator());
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback2);
+        itemTouchHelper.attachToRecyclerView(recyclerViewSteps);
+        stepsAdapter = new StepsAdapter(this, stepsList);
+        recyclerViewSteps.setAdapter(stepsAdapter);
+
 
         recyclerViewTools = findViewById(R.id.rv_tools);
-        toolsList = new ArrayList<>(Tools.getObjectList());
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerViewTools.setLayoutManager(layoutManager);
+        toolsList = new ArrayList<>(Tools.toolsList());
+        recyclerViewTools.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewTools.setItemAnimator(new DefaultItemAnimator());
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerViewTools);
+        ItemTouchHelper itemTouchHelper2 = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper2.attachToRecyclerView(recyclerViewTools);
         toolsAdapter = new ToolsAdapter(this, toolsList);
         recyclerViewTools.setAdapter(toolsAdapter);
+
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Posting");
@@ -89,7 +102,7 @@ public class ShareActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         firebaseAuth = FirebaseAuth.getInstance();
 
-
+        imageSteps = (ImageView)findViewById(R.id.image_steps);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +129,6 @@ public class ShareActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     private String getFileExtension(Uri imageUri) {
@@ -127,9 +139,13 @@ public class ShareActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 25 || resultCode == RESULT_OK && null != data) {
+        if (requestCode == 25 && resultCode == RESULT_OK && null != data) {
             imageUri = data.getData();
             imageAdd.setImageURI(imageUri);
+
+        } else if (requestCode == 26 && resultCode == RESULT_OK && null != data) {
+            imageUri = data.getData();
+            imageSteps.setImageURI(imageUri);
         }
     }
 
@@ -241,16 +257,37 @@ public class ShareActivity extends AppCompatActivity {
         }
     }
 
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
+     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
             | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             
             int fromPosition = viewHolder.getAdapterPosition();
-            int toPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
 
             Collections.swap(toolsList, fromPosition, toPosition);
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+            recyclerView.getAdapter().notifyDataSetChanged();
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+        }
+    };
+
+    ItemTouchHelper.SimpleCallback simpleCallback2 = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP
+            | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+
+            Collections.swap(stepsList, fromPosition, toPosition);
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+            recyclerView.getAdapter().notifyDataSetChanged();
             return false;
         }
 

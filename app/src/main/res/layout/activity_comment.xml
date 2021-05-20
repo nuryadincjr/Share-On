@@ -36,17 +36,19 @@
 
         <EditText
             android:id="@+id/comment_add"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:layout_toStartOf="@+id/comment_post"
             android:layout_toEndOf="@+id/image_profile"
             android:autofillHints=""
-            android:background="@drawable/rounded_1in"
+            android:background="@drawable/rounded_01in"
             android:backgroundTint="@color/colorPrimaryDark"
             android:hint="@string/comment_add"
             android:inputType=""
+            android:maxLength="500"
+            android:maxLines="10"
             android:padding="6dp"
             android:textColor="@color/white"
             android:textColorHint="@color/colorAccent" />

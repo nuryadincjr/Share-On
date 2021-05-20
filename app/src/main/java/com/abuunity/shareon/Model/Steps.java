@@ -1,18 +1,24 @@
 package com.abuunity.shareon.Model;
 
+import android.widget.ImageView;
+
+import com.abuunity.shareon.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tools {
+public class Steps {
         private int id;
         private String tools;
+        private int imageId;
 
-    public Tools() {
+    public Steps() {
     }
 
-    public Tools(int id, String tools) {
+    public Steps(int id, String tools, int imageId) {
         this.id = id;
         this.tools = tools;
+        this.imageId = imageId;
     }
 
     public int getId() {
@@ -31,16 +37,26 @@ public class Tools {
         this.tools = tools;
     }
 
-    public static List<Tools> toolsList() {
+    public int getImageId() {
+        return imageId;
+    }
 
-        List<Tools> dataList = new ArrayList<>();
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    public static List<Steps> stepsList() {
+
+        List<Steps> dataList = new ArrayList<>();
         int[] intId = getIntId();
+        int[] intImage = getIntImage();
         String[] stringTexts = getTexs();
 
         for (int i = 0; i < intId.length; i++) {
-            Tools tools = new Tools();
+            Steps tools = new Steps();
             tools.setId(intId[i]);
             tools.setTools(stringTexts[i]);
+            tools.setImageId(intImage[i]);
             dataList.add(tools);
         }
         return dataList;
@@ -49,7 +65,7 @@ public class Tools {
     private static int[] getIntId() {
 
         int[] intId = {
-                1, 2
+                0, 1
         };
         return intId;
     }
@@ -61,4 +77,13 @@ public class Tools {
         };
         return texList;
     }
+
+    private static int[] getIntImage() {
+
+        int[] intImage = {
+                R.drawable.ic_photo, R.drawable.ic_photo,
+        };
+        return intImage;
+    }
+
 }
