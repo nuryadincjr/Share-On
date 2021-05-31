@@ -75,5 +75,10 @@
     <string name="remove">remove</string>
     <string name="_0_64">0/64</string>
     <string name="_0_500">0/500</string>
+    <string name="nav_edit">edit</string>
+    <string name="edit_post">Edit Post</string>
+    <string name="save_edit">SAVE</string>
+    <string name="add">add</string>
+    <!--    kemarinteh yang Share-On teh di coba untuk memenuhi syarat firebase dg tabel min 2. alhamdulilah bisa yang awalnya menggunakan realtime database bisa di migrasi ke Firestore, yang kaya si bapa kemarin, kemungkinan tabelnya ada: users, posts, comments, follow, like, save dan notifications kalau mau ada pitur chats boleh. struktur programnya hampir sama kaya sibapa ada adapter, api, viewmodel. tapi sedikit di improve. kendalanya gk banyak Sweat grinning-->
 
 </resources>

@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/rounded_02lin">
+        android:background="@android:color/transparent">
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,7 +28,7 @@
             android:background="@drawable/rounded_02lin"
             app:itemIconTint="@color/selector"
             app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/menu_button" />
+            app:menu="@menu/menu_buttom_navigation" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

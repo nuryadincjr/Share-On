@@ -16,11 +16,12 @@
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/image_profile"
         android:background="@drawable/comment_background"
+        android:backgroundTint="@color/colorPrimarySoft"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/username"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -30,14 +31,13 @@
 
         <TextView
             android:id="@+id/comment_post"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:maxLines="5"
-            android:text="@string/comment_add"
-            android:textColor="@color/white" />
+            android:text="@string/comment_add" />
 
     </LinearLayout>
 
